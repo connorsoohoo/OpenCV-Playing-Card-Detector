@@ -59,7 +59,7 @@ def loop():
     rate.sleep()
     res = "No cards detected"
     rospy.loginfo(res)
-    pub.publish(res)
+    pub.publish(String(res))
     rate.sleep()
 
     ### ---- MAIN LOOP ---- ###
