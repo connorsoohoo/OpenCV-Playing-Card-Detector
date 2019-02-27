@@ -123,10 +123,11 @@ def loop():
 
 
                 # Output the findings to ROS
+                res = ""
                 for qCard in cards:
-                    res = qCard.toString()
-                    rospy.loginfo(res)
-                    pub.publish(res)
+                    res = res + qCard.toString() + ":"
+                rospy.loginfo(res)
+                pub.publish(res)
 
             if (len(cards) == 0):
                 res = "No cards detected"
