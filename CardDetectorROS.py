@@ -41,7 +41,7 @@ def loop():
     ## IF USING USB CAMERA INSTEAD OF PICAMERA,
     ## CHANGE THE THIRD ARGUMENT FROM 1 TO 2 IN THE FOLLOWING LINE:
     #videostream = VideoStream.VideoStream((IM_WIDTH,IM_HEIGHT),FRAME_RATE,1,0).start()
-    videostream = cv2.VideoCapture(0)
+    videostream = cv2.VideoCapture(1)
     videostream.set(3,1280)
     videostream.set(4,1024)
     time.sleep(1) # Give the camera time to warm up
