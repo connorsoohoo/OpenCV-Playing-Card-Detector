@@ -13,27 +13,29 @@ import time
 
 ### Constants ###
 
+scale = 0.8
+
 # Adaptive threshold levels
-BKG_THRESH = 60
-CARD_THRESH = 30
+BKG_THRESH = int(60 * scale)
+CARD_THRESH = int(30 * scale)
 
 # Width and height of card corner, where rank and suit are
-CORNER_WIDTH = 32
-CORNER_HEIGHT = 84
+CORNER_WIDTH = int(32 * scale)
+CORNER_HEIGHT = int(84 * scale)
 
 # Dimensions of rank train images
-RANK_WIDTH = 70
-RANK_HEIGHT = 125
+RANK_WIDTH = int(70)
+RANK_HEIGHT = int(125)
 
 # Dimensions of suit train images
-SUIT_WIDTH = 70
-SUIT_HEIGHT = 100
+SUIT_WIDTH = int(70)
+SUIT_HEIGHT = int(100)
 
-RANK_DIFF_MAX = 2000
-SUIT_DIFF_MAX = 700
+RANK_DIFF_MAX = int(2000 * scale)
+SUIT_DIFF_MAX = int(700 * scale)
 
-CARD_MAX_AREA = 120000
-CARD_MIN_AREA = 25000
+CARD_MAX_AREA = int(120000 * scale)
+CARD_MIN_AREA = int(25000 * scale)
 
 font = cv2.FONT_HERSHEY_SIMPLEX
 

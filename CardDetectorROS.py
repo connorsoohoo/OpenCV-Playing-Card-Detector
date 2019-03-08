@@ -153,7 +153,7 @@ def loop():
         rate.sleep()
 
         # Poll the keyboard. If 'q' is pressed, exit the main loop.
-        key = cv2.waitKey(1) & 0xFF
+        key = cv2.waitKey(10)
         if key == ord("q"):
             cam_quit = 1
 
