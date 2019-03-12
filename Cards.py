@@ -61,10 +61,23 @@ class Query_card:
         """
         Turns the card rank info and location into a string to be sent over ROS
         """
-        x = self.center[0]
-        y = self.center[1]
+        x, y = self.translateCoords()
         itemsList = [self.best_rank_match, self.best_suit_match, str(x), str(y)]
         return ",".join(itemsList)
+
+    def translateCoords(self):
+        """
+        Translates the center coords into the x,y format that the robot is using
+        Returns:
+            Translated x, y coords for the robot to use
+        """
+        x1 = self.center[0]
+        y1 = self.center[1]
+
+        # Found by calculating best fit line
+        x2 = -0.046 * y1 + 34.67
+        y2 = -0.045 * x1 + 28.15
+        return x2, y2
 
 class Train_ranks:
     """Structure to store information about train rank images."""
