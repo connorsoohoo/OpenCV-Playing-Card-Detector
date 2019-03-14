@@ -19,6 +19,9 @@ import ros
 import rospy
 from std_msgs.msg import String
 
+# Change this if you don't want to render the image
+render = True
+
 def loop():
     ### ---- INITIALIZATION ---- ###
     # Define constants and initialize variables
@@ -41,7 +44,14 @@ def loop():
     ## IF USING USB CAMERA INSTEAD OF PICAMERA,
     ## CHANGE THE THIRD ARGUMENT FROM 1 TO 2 IN THE FOLLOWING LINE:
     #videostream = VideoStream.VideoStream((IM_WIDTH,IM_HEIGHT),FRAME_RATE,1,0).start()
-    videostream = cv2.VideoCapture(0)
+    videostream = cv2.VideoCapture(1)
+
+    # TODO: Programmatically set brightness and exposure settings 
+    #expo = videostream.get(cv2.CV_CAP_PROP_GAIN)
+    #brightness = cap.get(cv2.cv.CV_CAP_PROP_BRIGHTNESS)
+    #print("Exposure: {0}".format(expo))
+
+
     videostream.set(3,1280)
     videostream.set(4,1024)
     time.sleep(1) # Give the camera time to warm up
@@ -139,7 +149,8 @@ def loop():
             cv2.putText(image,"FPS: "+str(int(frame_rate_calc)),(10,26),font,0.7,(255,0,255),2,cv2.LINE_AA)
 
             # Finally, display the image with the identified cards!
-            cv2.imshow("Card Detector",image)
+            if render:
+                cv2.imshow("Card Detector",image)
 
             # Calculate framerate
             t2 = cv2.getTickCount()
